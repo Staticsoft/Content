@@ -23,7 +23,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Content.Abstractions\Content.Abstractions.csproj" />
-    <ProjectReference Include="..\Content.Memory\Content.Memory.csproj" />
   </ItemGroup>
 
 </Project>
