@@ -1,6 +1,8 @@
-﻿namespace Staticsoft.Content.ChatGpt;
+﻿using OpenAI.ObjectModels;
+
+namespace Staticsoft.Content.ChatGpt;
 
 public class ChatGptTextContentOptions
 {
-    public string Model { get; init; } = string.Empty;
+    public string Model { get; init; } = Models.Gpt_4;
 }
