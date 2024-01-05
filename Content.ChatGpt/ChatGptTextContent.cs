@@ -1,15 +1,16 @@
 ﻿using OpenAI.Interfaces;
-using OpenAI.ObjectModels;
 using OpenAI.ObjectModels.RequestModels;
 using Staticsoft.Content.Abstractions;
 
 namespace Staticsoft.Content.ChatGpt;
 
 public class ChatGptTextContent(
-    IOpenAIService chatGpt
+    IOpenAIService chatGpt,
+    ChatGptTextContentOptions options
 ) : TextContent
 {
     readonly IOpenAIService ChatGpt = chatGpt;
+    readonly ChatGptTextContentOptions Options = options;
 
     public async Task<string> Produce(string requirements)
     {
@@ -19,7 +20,7 @@ public class ChatGptTextContent(
             {
                 ChatMessage.FromUser(requirements)
             },
-            Model = Models.Gpt_4
+            Model = Options.Model
         });
 
         if (completionResult.Error != null) throw new ContentException(completionResult.Error.Message);
