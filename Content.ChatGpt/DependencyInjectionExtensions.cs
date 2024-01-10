@@ -7,6 +7,11 @@ namespace Staticsoft.Content.ChatGpt;
 public static class DependencyInjectionExtensions
 {
     public static IServiceCollection UseChatGpt(this IServiceCollection services, string apiKey) => services
-            .AddSingleton<TextContent, ChatGptTextContent>()
-            .AddOpenAIService(settings => { settings.ApiKey = apiKey; }).Services;
+        .AddOpenAIService(settings => { settings.ApiKey = apiKey; }).Services;
+
+    public static IServiceCollection UseChatGptModel<Response, Options>(this IServiceCollection services)
+        where Options : ChatGptTextContentOptions<Response>
+        => services
+            .AddSingleton<TextContent<Response>, ChatGptTextContent<Response>>()
+            .AddSingleton<ChatGptTextContentOptions<Response>, Options>();
 }

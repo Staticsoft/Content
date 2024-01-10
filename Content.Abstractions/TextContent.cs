@@ -2,7 +2,7 @@
 
 namespace Staticsoft.Content.Abstractions;
 
-public interface TextContent
+public interface TextContent<Model>
 {
-    Task<string> Produce(string requirements);
+    Task<Model> Produce(string requirements);
 }
