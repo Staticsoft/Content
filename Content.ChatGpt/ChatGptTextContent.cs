@@ -56,9 +56,10 @@ public class ChatGptTextContent<Response>(
         _ => [ChatMessage.FromSystem(Options.SystemMessage), ChatMessage.FromUser(userMessage)]
     };
 
-    Response DeserializeResponse(string content)
-        => JsonSerializer.Deserialize<Response>(FormatJsonString(content), DeserializationOptions)
-        ?? throw UnableToDeserialize(content);
+    Response DeserializeResponse(string content) => Try
+        .Return(() => JsonSerializer.Deserialize<Response>(FormatJsonString(content), DeserializationOptions))
+        .On<JsonException>(exception => UnableToDeserialize(content, exception))
+        .Result() ?? throw UnableToDeserialize(content);
 
     static string FormatJsonString(string input)
         => input.Length < "```json```".Length
@@ -73,8 +74,14 @@ public class ChatGptTextContent<Response>(
         => new(completionResult.Error.Message);
 
     static ContentException UnableToDeserialize(string content)
-        => new($"""
+        => new(SerializationErrorMessage(content));
+
+    static ContentException UnableToDeserialize(string content, Exception innerException)
+        => new(SerializationErrorMessage(content), innerException);
+
+    static string SerializationErrorMessage(string content)
+        => $"""
             Unable to deserialize string into {typeof(Response).FullName} type.
             {content}
-            """);
+            """;
 }

@@ -13,6 +13,7 @@
   
   <ItemGroup>
     <PackageReference Include="Staticsoft.Extensions.DependencyInjection" Version="1.0.0-3" />
+    <PackageReference Include="Staticsoft.TryReturn" Version="1.0.0-7" />
     <PackageReference Include="Betalgo.OpenAI" Version="7.4.1" />
   </ItemGroup>
 
