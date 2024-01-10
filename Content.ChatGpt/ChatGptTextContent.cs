@@ -46,7 +46,8 @@ public class ChatGptTextContent<Response>(
         => new()
         {
             Messages = CreateMessages(userMessage),
-            Model = Options.Model
+            Model = Options.Model,
+            ChatResponseFormat = ChatCompletionCreateRequest.ResponseFormats.Json
         };
 
     List<ChatMessage> CreateMessages(string userMessage) => userMessage switch
