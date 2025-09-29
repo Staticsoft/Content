@@ -1,6 +1,6 @@
-﻿using OpenAI.Interfaces;
-using OpenAI.ObjectModels.RequestModels;
-using OpenAI.ObjectModels.ResponseModels;
+using Betalgo.Ranul.OpenAI.Interfaces;
+using Betalgo.Ranul.OpenAI.ObjectModels.RequestModels;
+using Betalgo.Ranul.OpenAI.ObjectModels.ResponseModels;
 using Staticsoft.Content.Abstractions;
 using System.Text.Encodings.Web;
 using System.Text.Json;
@@ -9,11 +9,11 @@ namespace Staticsoft.Content.ChatGpt;
 
 public class ChatGptTextContent<Response>(
     IOpenAIService chatGpt,
-    ChatGptTextContentOptions<Response> options
+    ChatGptContentOptions<Response> options
 ) : TextContent<Response>
 {
     readonly IOpenAIService ChatGpt = chatGpt;
-    readonly ChatGptTextContentOptions<Response> Options = options;
+    readonly ChatGptContentOptions<Response> Options = options;
     readonly JsonSerializerOptions DeserializationOptions = new()
     {
         PropertyNameCaseInsensitive = true,
@@ -30,7 +30,7 @@ public class ChatGptTextContent<Response>(
     async Task<string> GetResponse(string userMessage)
     {
         var completionResult = await CreateCompletion(userMessage);
-        return completionResult.Choices.First().Message.Content;
+        return completionResult.Choices.First().Message.Content ?? throw EmptyResponse();
     }
 
     async Task<ChatCompletionCreateResponse> CreateCompletion(string userMessage)
@@ -52,7 +52,7 @@ public class ChatGptTextContent<Response>(
 
     List<ChatMessage> CreateMessages(string userMessage) => userMessage switch
     {
-        "" or null => [ChatMessage.FromUser(userMessage)],
+        "" or null => [ChatMessage.FromUser(userMessage!)],
         _ => [ChatMessage.FromSystem(Options.SystemMessage), ChatMessage.FromUser(userMessage)]
     };
 
@@ -71,7 +71,7 @@ public class ChatGptTextContent<Response>(
         };
 
     static ContentException UnableToCreateCompletion(ChatCompletionCreateResponse completionResult)
-        => new(completionResult.Error.Message);
+        => new(completionResult.Error!.Message);
 
     static ContentException UnableToDeserialize(string content)
         => new(SerializationErrorMessage(content));
@@ -84,4 +84,7 @@ public class ChatGptTextContent<Response>(
             Unable to deserialize string into {typeof(Response).FullName} type.
             {content}
             """;
+
+    static ContentException EmptyResponse()
+        => new("The response was empty");
 }

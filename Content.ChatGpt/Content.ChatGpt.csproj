@@ -1,9 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net60</TargetFrameworks>
+    <TargetFrameworks>net80</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <RootNamespace>Staticsoft.$(MSBuildProjectName)</RootNamespace>
+    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
@@ -14,7 +15,7 @@
   <ItemGroup>
     <PackageReference Include="Staticsoft.Extensions.DependencyInjection" Version="1.0.0-3" />
     <PackageReference Include="Staticsoft.TryReturn" Version="1.0.0-7" />
-    <PackageReference Include="Betalgo.OpenAI" Version="7.4.1" />
+    <PackageReference Include="Betalgo.Ranul.OpenAI" Version="9.1.0" />
   </ItemGroup>
 
   <PropertyGroup>

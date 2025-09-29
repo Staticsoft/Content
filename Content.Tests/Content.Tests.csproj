@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net60</TargetFramework>
+    <TargetFramework>net80</TargetFramework>
     <RootNamespace>Staticsoft.$(MSBuildProjectName)</RootNamespace>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Content.Abstractions\Content.Abstractions.csproj" />
+    <ProjectReference Include="..\Content.ChatGpt\Content.ChatGpt.csproj" />
   </ItemGroup>
 
 </Project>
