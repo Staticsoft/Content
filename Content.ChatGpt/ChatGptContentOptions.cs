@@ -10,4 +10,11 @@ public class ChatGptContentOptions
 {
     public required string ApiKey { get; init; }
     public required string Model { get; init; }
+    public required ReasoningLevel Reasoning { get; init; } = ReasoningLevel.Low;
+    public enum ReasoningLevel
+    {
+        Low,
+        Medium,
+        High
+    }
 }

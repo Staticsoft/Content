@@ -4,6 +4,7 @@ using Betalgo.Ranul.OpenAI.ObjectModels.ResponseModels;
 using Staticsoft.Content.Abstractions;
 using System.Text.Encodings.Web;
 using System.Text.Json;
+using ResponseFormat = Betalgo.Ranul.OpenAI.Contracts.Enums.ResponseFormat;
 
 namespace Staticsoft.Content.ChatGpt;
 
@@ -47,7 +48,7 @@ public class ChatGptTextContent<Response>(
         {
             Messages = CreateMessages(userMessage),
             Model = Options.Model,
-            ChatResponseFormat = ChatCompletionCreateRequest.ResponseFormats.Json
+            ResponseFormat = new() { Type = ResponseFormat.JsonObject },
         };
 
     List<ChatMessage> CreateMessages(string userMessage) => userMessage switch

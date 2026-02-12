@@ -1,3 +1,4 @@
+using Betalgo.Ranul.OpenAI.Contracts.Enums;
 using Betalgo.Ranul.OpenAI.Interfaces;
 using Betalgo.Ranul.OpenAI.ObjectModels.RequestModels;
 using Staticsoft.Content.Abstractions;
@@ -37,7 +38,17 @@ public class ChatGptStreamableContent(
         {
             Messages = ConvertMessages(messages).ToList(),
             Model = Options.Model,
-            Stream = true
+            Stream = true,
+            ReasoningEffort = ToReasoningEffort(Options.Reasoning)
+        };
+
+    static ReasoningEffort? ToReasoningEffort(ChatGptContentOptions.ReasoningLevel reasoning)
+        => reasoning switch
+        {
+            ChatGptContentOptions.ReasoningLevel.Low => ReasoningEffort.Low,
+            ChatGptContentOptions.ReasoningLevel.Medium => ReasoningEffort.Medium,
+            ChatGptContentOptions.ReasoningLevel.High => ReasoningEffort.High,
+            _ => throw new NotSupportedException($"{nameof(ChatGptContentOptions.ReasoningLevel)} '{reasoning}' is not supported")
         };
 
     static IEnumerable<ChatMessage> ConvertMessages(IEnumerable<Message> messages)
