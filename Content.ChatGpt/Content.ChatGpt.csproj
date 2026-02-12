@@ -15,7 +15,7 @@
   <ItemGroup>
     <PackageReference Include="Staticsoft.Extensions.DependencyInjection" Version="1.0.0-3" />
     <PackageReference Include="Staticsoft.TryReturn" Version="1.0.0-7" />
-    <PackageReference Include="Betalgo.Ranul.OpenAI" Version="9.1.0" />
+    <PackageReference Include="Betalgo.Ranul.OpenAI" Version="9.2.6" />
   </ItemGroup>
 
   <PropertyGroup>
