@@ -42,9 +42,11 @@ public class ChatGptStreamableContent(
             ReasoningEffort = ToReasoningEffort(Options.Reasoning)
         };
 
-    static ReasoningEffort? ToReasoningEffort(ChatGptContentOptions.ReasoningLevel reasoning)
+    readonly static ReasoningEffort MinimalReasoning = new("minimal");
+    static ReasoningEffort ToReasoningEffort(ChatGptContentOptions.ReasoningLevel reasoning)
         => reasoning switch
         {
+            ChatGptContentOptions.ReasoningLevel.None => MinimalReasoning,
             ChatGptContentOptions.ReasoningLevel.Low => ReasoningEffort.Low,
             ChatGptContentOptions.ReasoningLevel.Medium => ReasoningEffort.Medium,
             ChatGptContentOptions.ReasoningLevel.High => ReasoningEffort.High,
