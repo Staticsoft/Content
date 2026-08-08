@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Content.ChatGpt", "Content.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Content.Claude", "Content.Claude\Content.Claude.csproj", "{0BA5168B-09CE-4592-AD3B-650B83EBB9D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Content.Bedrock", "Content.Bedrock\Content.Bedrock.csproj", "{D9003775-88BB-42C5-823D-31764DB0050E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Content.Memory", "Content.Memory\Content.Memory.csproj", "{BCF0B01F-D689-474F-8ED3-3FFB3ADBFBA0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{0BA5168B-09CE-4592-AD3B-650B83EBB9D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BA5168B-09CE-4592-AD3B-650B83EBB9D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BA5168B-09CE-4592-AD3B-650B83EBB9D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9003775-88BB-42C5-823D-31764DB0050E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9003775-88BB-42C5-823D-31764DB0050E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9003775-88BB-42C5-823D-31764DB0050E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9003775-88BB-42C5-823D-31764DB0050E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCF0B01F-D689-474F-8ED3-3FFB3ADBFBA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCF0B01F-D689-474F-8ED3-3FFB3ADBFBA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCF0B01F-D689-474F-8ED3-3FFB3ADBFBA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCF0B01F-D689-474F-8ED3-3FFB3ADBFBA0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
