@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <RootNamespace>Staticsoft.$(MSBuildProjectName)</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
@@ -23,7 +25,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Content.Abstractions\Content.Abstractions.csproj" />
+    <ProjectReference Include="..\Content.Bedrock\Content.Bedrock.csproj" />
     <ProjectReference Include="..\Content.ChatGpt\Content.ChatGpt.csproj" />
+    <ProjectReference Include="..\Content.Memory\Content.Memory.csproj" />
   </ItemGroup>
 
 </Project>

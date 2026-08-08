@@ -1,3 +1,0 @@
-[submodule ".claude/nuget-inspector"]
-	path = .claude/skills/nuget-inspector
-	url = https://github.com/Staticsoft/nuget-inspector
